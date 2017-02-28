@@ -1,0 +1,206 @@
+\documentclass[11pt, fleqn]{article}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{todonotes}
+\usepackage{amssymb}
+\usepackage{verbatim}
+\usepackage{color}
+\usepackage[lmargin=1.1in,rmargin=1.1in,bottom=1.3in,top=1.3in,twoside=False]{geometry}
+
+\usepackage{relsize,xspace}
+ \usepackage{xcolor}
+ \usepackage{mathtools}
+
+\usepackage{microtype}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{stmaryrd}
+\usepackage{tikz}
+\usepackage{bm}
+\usepackage{tikz}
+
+\definecolor{light-blue}{rgb}{0.2,0.4,0.9}
+\usepackage[ocgcolorlinks, allcolors={light-blue}]{hyperref}
+% \definecolor{light-blue}{rgb}{0.7,0.8,1}
+% \usepackage[allbordercolors={light-blue},pdfborderstyle={/S/U/W 0.8}]{hyperref}
+
+\usepackage[amsmath,thmmarks,hyperref]{ntheorem}
+\usepackage{cleveref}
+
+\crefformat{page}{#2page~#1#3}%
+\Crefformat{page}{#2Page~#1#3}%
+\crefformat{equation}{#2(#1)#3}%
+\Crefformat{equation}{#2(#1)#3}%
+\crefformat{figure}{#2Figure~#1#3}%
+\Crefformat{figure}{#2Figure~#1#3}%
+\crefformat{section}{#2Section~#1#3}
+\Crefformat{section}{#2Section~#1#3}
+\crefformat{chapter}{#2Chapter~#1#3}
+\Crefformat{chapter}{#2Chapter~#1#3}
+\crefformat{chapter*}{#2Chapter~#1#3}
+\Crefformat{chapter*}{#2Chapter~#1#3}
+\crefformat{part}{#2Part~#1#3}
+\Crefformat{part}{#2Part~#1#3}
+\crefformat{enumi}{#2(#1)#3}
+\Crefformat{enumi}{#2(#1)#3}
+
+\usepackage{latexsym}
+
+% BEGIN ntheorem configuration
+
+\theoremnumbering{arabic}
+\theoremstyle{plain}
+\theoremsymbol{}
+\theorembodyfont{\itshape}
+\theoremheaderfont{\normalfont\bfseries}
+\theoremseparator{}
+
+\newtheorem{theorem}{Theorem}[section]
+\crefformat{theorem}{#2Theorem~#1#3}
+\Crefformat{theorem}{#2Theorem~#1#3}
+
+\newcommand{\newtheoremwithcrefformat}[2]{%
+  \newtheorem{#1}[theorem]{#2}%
+  \crefformat{#1}{##2\MakeUppercase#1~##1##3}%
+  \Crefformat{#1}{##2\MakeUppercase#1~##1##3}%
+}
+
+\newtheoremwithcrefformat{proposition}{Proposition}
+\newtheoremwithcrefformat{observation}{Observation}
+\newtheoremwithcrefformat{lemma}{Lemma}
+\newtheoremwithcrefformat{conjecture}{Conjecture}
+\newtheoremwithcrefformat{corollary}{Corollary}
+\theorembodyfont{\upshape}
+\newtheoremwithcrefformat{example}{Example}
+\newtheoremwithcrefformat{remark}{Remark}
+\newtheoremwithcrefformat{claim}{Claim}
+
+\theoremsymbol{\ensuremath{□}}
+\newtheoremwithcrefformat{definition}{Definition}
+
+\theoremstyle{nonumberplain}
+\theoremheaderfont{\scshape}
+\theorembodyfont{\normalfont}
+\theoremsymbol{\ensuremath{\square}}
+\newtheorem{proof}{Proof.}
+
+% END ntheorem configuration
+
+
+\setlength{\parskip}{0.3cm}
+\setlength{\parindent}{0cm}
+\setlength{\mathindent}{1.5cm}
+
+\newcommand{\wcol}{\mathrm{wcol}}
+\newcommand{\col}{\mathrm{col}}
+\newcommand{\adm}{\mathrm{adm}}
+\newcommand{\Wreach}{\mathrm{WReach}}
+\newcommand{\Sreach}{\mathrm{SReach}}
+\newcommand{\wcolorder}{\sqsubseteq}
+\newcommand{\Oof}{\mathcal{O}}
+\newcommand{\CCC}{\mathcal{C}}
+\newcommand{\DDD}{\mathcal{D}}
+\newcommand{\Vv}{\mathcal{V}}
+\newcommand{\fv}{\textrm{FV}}
+\newcommand{\embed}{\hookrightarrow}
+
+\newcommand{\ie}{i.e.\@ }
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Rbar}{\overline{\R}}
+\newcommand{\tup}[1]{\overline{#1}}
+\renewcommand{\phi}{\varphi}
+\newcommand{\strA}{\mathfrak{A}}
+\newcommand{\strB}{\mathfrak{B}}
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\setof}[2]{\{#1\ |\ #2\}}
+\newcommand{\family}[2]{(#1)_{#2}}
+\renewcommand{\subset}{\subseteq}
+\newcommand{\di}{\vec}
+\newcommand{\todonote}[2]{\todo[inline]{{\bf (#1)}: #2}}
+\newcommand{\sz}[1]{\todonote{Sz}{#1}}
+\renewcommand{\implies}{\rightarrow}
+\renewcommand{\iff}{\leftrightarrow}
+\newcommand{\sem}[1]{[\![#1]\!]}
+\newcommand{\seq}{_{\bullet}}
+\newcommand{\cliques}{\textit{Cliques}}
+\newcommand{\subgraph}{\textit{Subgraph}}
+\newcommand{\indsub}{\textit{InducedSubgraph}}
+\newcommand{\minor}[1]{\textit{Minor}_{#1}}
+\newcommand{\tminor}[1]{\textit{TopMinor}_{#1}}
+\newcommand{\minors}[2]{\minor{#1}(#2)}
+\newcommand{\tminors}[2]{\tminor{#1}(#2)}
+\newcommand{\impl}[2]{\eqref{#1}$\rightarrow$\eqref{#2}}
+\newcommand{\msubdiv}[2]{\textit{MaxSubdivision}_{#1}(#2)}
+\newcommand{\subdiv}[2]{\textit{Subdivision}_{#1}(#2)}
+
+\newcommand{\dom}{\textrm{dom}}
+\newcommand{\disjoint}{\sqcup}
+\newcommand{\Gr}{{\mathcal G}\!\,raphs}
+\newcommand{\Ff}{{\cal F}}
+\newcommand{\Cc}{{\cal C}}
+\newcommand{\Mm}{{\cal M}}
+\newcommand{\Tt}{{\cal T}}
+\newcommand{\Dd}{{\cal D}}
+\newcommand{\eps}{\varepsilon}
+
+
+\newcommand{\val}{t}
+% \newcommand{\col}{\textrm{col}}
+\newcommand{\tp}{\textrm{tp}}
+\newcommand{\rtp}{\textit{S}}
+
+\newcommand{\Fun}[2]{#1\to#2} %set of all functions from X to Y is \Fun X Y
+\newcommand{\fun}[3]{#1:#2\to #3}
+
+\newcommand{\dist}{\textit{dist}}
+\newcommand{\eqdef}{\stackrel{def}=}
+
+
+
+\newenvironment{quotetag}[1][]
+{~\par%\vskip 0mm                % Skip down 1/2 before story
+	\begingroup                  % Start of formatting properties
+	%\rightskip4em\leftskip4em   % Wider margins for narrower text
+	\begin{equation}
+		 \ifthenelse{\equal{#1}{}}{}{\tag{#1}}
+		 \begin{minipage}[c]{115mm}
+			\it                          % Italic font
+	%		\noindent{\par}  % Make dotted line
+			\noindent{\par}
+			\begin{center}
+}
+{
+        \end{center}
+		\end{minipage}
+	\end{equation}
+	%\par%\noindent{\par}  % Make dotted line
+	\endgroup                        % End of formatting properties
+%~\vskip 0mm                    % Skip final 1/2 inch}
+\par
+\medskip
+}
+
+
+\title{Sparsity}
+%{\graph theory, model theory and algorithms}}
+
+\author{Micha\l Pilipczuk, Sebastian Siebertz, and Szymon Toru\'nczyk}
+
+\begin{document}
+
+\maketitle
+
+
+\input{definitions}
+\input{classes}
+
+\newpage
+\bibliographystyle{plain}
+\bibliography{stab} 
+
+
+
+\end{document}
